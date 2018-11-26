@@ -1,2 +1,2 @@
 # scr-offshore
-LCD screen opencv number recognition
+Repository for projects made while at sea

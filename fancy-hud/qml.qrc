@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>SCRhud.qml</file>
+        <file>SCRcamera.qml</file>
+        <file>SCRGauge.qml</file>
+        <file>SCRNavigator.qml</file>
+    </qresource>
+    <qresource prefix="/img">
+        <file>logo-small-notext.svg</file>
+    </qresource>
+</RCC>

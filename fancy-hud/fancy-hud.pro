@@ -1,28 +1,28 @@
 QT += quick charts
-QT += multimedia 3dinput
+QT += multimedia 3dinput 3dquick 3dquickextras
 CONFIG += c++11
 
-INCLUDEPATH += /usr/local/include/opencv2
+#INCLUDEPATH += /usr/local/include/opencv2
 LIBS += -L/usr/local/lib
 
 
-LIBS += -lopencv_core \
--lopencv_imgproc \
--lopencv_imgcodecs \
--lopencv_videoio \
--lopencv_flann \
--lopencv_highgui \
--lopencv_features2d \
--lopencv_photo \
--lopencv_video \
--lopencv_calib3d \
--lopencv_objdetect \
--lopencv_videostab \
--lopencv_shape \
--lopencv_stitching \
--lopencv_superres \
--lopencv_dnn \
--lopencv_ml
+#LIBS += -lopencv_core \
+#-lopencv_imgproc \
+#-lopencv_imgcodecs \
+#-lopencv_videoio \
+#-lopencv_flann \
+#-lopencv_highgui \
+#-lopencv_features2d \
+#-lopencv_photo \
+#-lopencv_video \
+#-lopencv_calib3d \
+#-lopencv_objdetect \
+#-lopencv_videostab \
+#-lopencv_shape \
+#-lopencv_stitching \
+#-lopencv_superres \
+#-lopencv_dnn \
+#-lopencv_ml
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked deprecated (the exact warnings
@@ -54,5 +54,3 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     scrcontours.h
 
-DISTFILES += \
-    SCRhud.qml

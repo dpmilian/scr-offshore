@@ -10,6 +10,7 @@ int main(int argc, char *argv[]){
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QApplication app(argc, argv);
+    app.setAttribute(Qt::AA_UseDesktopOpenGL);
 
 //    qmlRegisterType<QCvDetectFilter>("com.amin.classes", 1, 0, "CvDetectFilter");
     qmlRegisterType<SCR::ContourFinder>("com.SCR.classes", 1, 0,"ContourFinder");

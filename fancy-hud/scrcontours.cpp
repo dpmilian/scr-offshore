@@ -17,8 +17,8 @@ QVideoFrame SCR::ContourFinderRunnable::run(QVideoFrame *input, const QVideoSurf
         QImage image(input->bits(), input->width(), input->height(),
                      QVideoFrame::imageFormatFromPixelFormat(input->pixelFormat()));
         image = image.convertToFormat(QImage::Format_RGB888);
-        cv::Mat mat(image.height(), image.width(), CV_8UC3, image.bits(), image.bytesPerLine());
-        cv::flip(mat, mat, 0);
+//        cv::Mat mat(image.height(), image.width(), CV_8UC3, image.bits(), image.bytesPerLine());
+//        cv::flip(mat, mat, 0);
     }
 
 //    emit filter->objectDetected(100, 200, 200, 200);

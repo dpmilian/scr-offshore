@@ -2,7 +2,7 @@
 #define SCRCONTOURS_H
 
 #include <QAbstractVideoFilter>
-#include "opencv2/opencv.hpp"
+//#include "opencv2/opencv.hpp"
 
 namespace SCR{
 

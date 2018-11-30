@@ -6,6 +6,8 @@
         <file>SCRcamera.qml</file>
         <file>SCRGauge.qml</file>
         <file>SCRNavigator.qml</file>
+        <file>SCRMap.qml</file>
+        <file>SCRBar.qml</file>
     </qresource>
     <qresource prefix="/img">
         <file>logo-small-notext.svg</file>

@@ -43,7 +43,7 @@ Item {
 
         Glow{
             anchors.fill: compass_background_canvas
-            radius: 23
+            radius: 8
             samples: 35
             color: Qt.rgba(1, 102/255, 0, .4);
             source: compass_background_canvas

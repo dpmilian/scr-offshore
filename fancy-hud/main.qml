@@ -42,11 +42,22 @@ ApplicationWindow{
 
 //    SCRcamera {}
 
+<<<<<<< Updated upstream
     SCRhud {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
         width: 500
         height: 500
+=======
+            if (auxhdg < 0) auxhdg = auxhdg + 360
+            auxhdg = auxhdg.toFixed(0)
+
+//            console.warn("Toggle: move from " + oldhdg + " to " + auxhdg)
+            changeHdg(auxhdg);
+        }
+
+        Timer {interval: 500; repeat: true; running: true; onTriggered: this.parent.toggle() }
+>>>>>>> Stashed changes
     }
 
    // SCRBar {}

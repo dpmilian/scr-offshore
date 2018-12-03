@@ -8,6 +8,7 @@ Item {
     anchors.top: parent.top
     anchors.right: parent.right
 
+
     Rectangle {
 
         color: "transparent"

@@ -1,11 +1,26 @@
 #ifndef SCRLIDAR2D_H
 #define SCRLIDAR2D_H
 
+#include "rplidar/include/rplidar.h"
+#include <QString>
 
-class scrlidar2d
-{
+namespace rpl = rp::standalone::rplidar;
+
+namespace SCR{
+
+class Lidar2d {
 public:
-    scrlidar2d();
+    Lidar2d();
+
+    int main(QString port = "");
+private:
+    bool checkRPLIDARHealth(rpl::RPlidarDriver *drv);
+    void releaseDriver();
+    int createDriver();
+
+    rpl::RPlidarDriver *drv;
 };
+}
+
 
 #endif // SCRLIDAR2D_H

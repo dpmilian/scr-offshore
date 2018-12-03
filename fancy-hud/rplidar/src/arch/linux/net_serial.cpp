@@ -32,7 +32,7 @@
  *
  */
 
-#include "arch/linux/arch_linux.h"
+#include "rplidar/src/arch/linux/arch_linux.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -44,8 +44,8 @@
 #include <fcntl.h>
 
 #include <time.h>
-#include "hal/types.h"
-#include "arch/linux/net_serial.h"
+#include "rplidar/src/hal/types.h"
+#include "rplidar/src/arch/linux/net_serial.h"
 #include <sys/select.h>
 
 #include <algorithm>

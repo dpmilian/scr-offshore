@@ -12,17 +12,12 @@ import QtQuick.Controls 2.0
 import QtQuick.Controls.Styles 1.4
 
 import QtQuick 2.0 as QQ2
+import QtCharts 2.0
 
 Item{
 
-    Rectangle {
-        color: "steelblue" //Qt.rgba(200, 20, 34, .7)
-        anchors.fill: parent
-    }
-
     Scene3D{
         anchors.fill: parent
-
 
         Entity {
             id: hudRoot
@@ -46,7 +41,7 @@ Item{
                 id: cube
                 components: [cubeTransform, cubeMaterial, cubeMesh, cubePicker]
 
-                property real rotationAngle: 0
+                property real rotationAngle: 60
 
                 Behavior on rotationAngle {
                     RotationAnimation {
@@ -65,19 +60,27 @@ Item{
 
                 Transform {
                     id: cubeTransform
-                    translation: Qt.vector3d( 0.0, 0.0, 2.0)
-                    scale3D: Qt.vector3d(4, 2, .2)
-                    rotation: fromAxisAndAngle(Qt.vector3d(0,1,0), cube.rotationAngle)
+                    translation: Qt.vector3d( 0.0, 0.0, 0.0)
+                    scale3D: Qt.vector3d(5, 5, .2)
+                    rotation: fromAxisAndAngle(Qt.vector3d(0,1,1), cube.rotationAngle)
                 }
 
                 CuboidMesh {
                     id: cubeMesh
                 }
 
-                TextureMaterial {
+                PhongMaterial {
                     id: cubeMaterial
-                    texture: offscreenTexture
+                    ambient: Qt.rgba( 244/255,
+                                      12/255,
+                                      99/255, 1.0 )
+                    diffuse: Qt.rgba( 0.1, 0.1, 0.1, 0.5 )
+                    shininess: .8
                 }
+//                TextureMaterial {
+//                    id: cubeMaterial
+//                    texture: offscreenTexture
+//                }
 
                 ObjectPicker {
                     id: cubePicker
@@ -87,7 +90,7 @@ Item{
                     // Explicitly require a middle click to have the Scene2D grab the mouse
                     // events from the picker
                     onPressed: {
-                        if (pick.button === PickEvent.MiddleButton) {
+                        if (pick.button === PickEvent.RightButton) {
                             qmlTexture.mouseEnabled = !qmlTexture.mouseEnabled
                         }
                     }
@@ -95,14 +98,22 @@ Item{
 
                 Scene2D {
                     id: qmlTexture
+                    Component.onDestruction: {
+                        console.warn("destroying");
+
+                        qmlTexture.output.texture.destroy();
+                    }
+
+//                     renderPolicy: QtQuick.QScene2D.Continuous
                     output: RenderTargetOutput {
                         attachmentPoint: RenderTargetOutput.Color0
+
                         texture: Texture2D {
                             id: offscreenTexture
                             width: 1024
                             height: 1024
                             format: Texture.RGBA8_UNorm
-                            generateMipMaps: true
+                            generateMipMaps: false
                             magnificationFilter: Texture.Linear
                             minificationFilter: Texture.LinearMipMapLinear
                             wrapMode {
@@ -113,17 +124,31 @@ Item{
                     }
 
                     entities: [ cube ]
-                    mouseEnabled: false
+                    mouseEnabled: true
 
-                    Rectangle {
-                        z: 1
-                        color: "red" //Qt.rgba(200, 20, 34, .7)
-                        width: offscreenTexture.width/2
+
+                    ChartView {
+                        id: chart
+                        title: "Line"
+                        width: offscreenTexture.width
                         height: offscreenTexture.height
+
+                        //margins.top: parent.height * 0.2
+                        backgroundColor: "transparent"
+
+                        LineSeries {
+                            name: "LineSeries"
+                            XYPoint { x: 0; y: 0 }
+                            XYPoint { x: 1.1; y: 2.1 }
+                            XYPoint { x: 1.9; y: 3.3 }
+                            XYPoint { x: 2.1; y: 2.1 }
+                            XYPoint { x: 2.9; y: 4.9 }
+                            XYPoint { x: 3.4; y: 3.0 }
+                            XYPoint { x: 4.1; y: 3.3 }
+                        }
                     }
-
-
                 }
+
             }
         }
 

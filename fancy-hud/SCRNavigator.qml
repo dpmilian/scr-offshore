@@ -4,8 +4,8 @@ import QtGraphicalEffects 1.0
 Item {
     id: compass
     property real hdg: 0
-    property real tilt: 40
-    property real square_dim: Math.max(compass.width, compass.height)
+    property real tilt: 0
+    property real square_dim: Math.min(compass.width, compass.height)
     rotation: 0
 
     function changeHdg(newhdg){
@@ -43,7 +43,7 @@ Item {
 
         Glow{
             anchors.fill: compass_background_canvas
-            radius: 8
+            radius: 5
             samples: 35
             color: Qt.rgba(1, 102/255, 0, .4);
             source: compass_background_canvas
@@ -76,11 +76,11 @@ Item {
                 ctx.arc(0, 0, width/2 - 50, 0, 2* Math.PI, false);
                 ctx.stroke();
 
-                ctx.beginPath();
-                ctx.strokeStyle = Qt.rgba(1., 102./255., 0, .5);
-                ctx.lineWidth = 5;
-                ctx.arc(0, 0, width/2 - 115, 0, 2* Math.PI, false);
-                ctx.stroke();
+//                ctx.beginPath();
+//                ctx.strokeStyle = Qt.rgba(1., 102./255., 0, .5);
+//                ctx.lineWidth = 5;
+//                ctx.arc(0, 0, width/2 - 115, 0, 2* Math.PI, false);
+//                ctx.stroke();
 
 //                ctx.beginPath();
 //                ctx.lineWidth = 3;
@@ -200,5 +200,7 @@ Item {
             }
         }
     }
+
+
 }
 

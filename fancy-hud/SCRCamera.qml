@@ -1,4 +1,4 @@
-import com.SCR.classes 1.0
+import SCR 1.0
 import QtMultimedia 5.8
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.3

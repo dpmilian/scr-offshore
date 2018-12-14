@@ -1,16 +1,20 @@
 import QtQuick 2.0
 import QtCharts 2.0
+import QtQuick.Controls 1.4
 
 Item {
-    id: rightBar
     width: 0.2 * parent.width
     height: parent.height
     anchors.top: parent.top
     anchors.right: parent.right
 
+//    property TextArea log : debuglog
+
+    function log(msg){
+        debuglog.append(msg);
+    }
 
     Rectangle {
-
         color: "transparent"
         opacity: 0.1
         width: parent.width
@@ -41,5 +45,10 @@ Item {
             XYPoint { x: 3.4; y: 3.0 }
             XYPoint { x: 4.1; y: 3.3 }
         }
+    }
+    TextArea {
+        id: debuglog
+        width: parent.width
+        height: 600
     }
 }

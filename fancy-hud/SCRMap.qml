@@ -12,7 +12,7 @@ Item {
         id: map
         anchors.fill: parent
         plugin: osmplugin
-        zoomLevel: maximumZoomLevel
+        zoomLevel: map.maximumZoomLevel
         center {
             // Charca de Navia
             latitude: 42.210987

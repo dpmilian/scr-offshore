@@ -1,9 +1,9 @@
 #include <QApplication>
 #include <QQuickView>
 #include <QQmlApplicationEngine>
-#include "scrlidar2d.h"
+#include <QQmlContext>
 
-//#include "qcvdetectfilter.h"
+#include "scrlidar2d.h"
 #include "scrcontours.h"
 
 int main(int argc, char *argv[]){
@@ -13,13 +13,16 @@ int main(int argc, char *argv[]){
     QApplication app(argc, argv);
     app.setAttribute(Qt::AA_UseDesktopOpenGL);
 
-    qmlRegisterType<SCR::ContourFinder>("com.SCR.classes", 1, 0,"ContourFinder");
-    qRegisterMetaType<QList<QRect>>("QList<QRect>");
+    qmlRegisterType<SCR::ContourFinder>("SCR", 1, 0,"ContourFinder");
+    qRegisterMetaType<QList<double>>("QList<double>");
 
-    SCR::Lidar2d lidar;
-    lidar.main();
+    qmlRegisterType<SCR::Lidar2d>("SCR", 1, 0, "Lidar2d");
+//    SCR::Lidar2d lidar;
+//    lidar.main();
+
     QQmlApplicationEngine engine;
-    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+    engine.load(QUrl(QStringLiteral("qrc:/SCRHud.qml")));
+
     if (engine.rootObjects().isEmpty())
         return -1;
 

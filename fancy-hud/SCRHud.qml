@@ -25,9 +25,9 @@ ApplicationWindow{
         }
     }
 
-//   SCRMap {
-//       anchors.fill: parent
-//   }
+    SCRMap {
+        anchors.fill: parent
+    }
 
     Text {
         anchors.top: parent.top
@@ -43,36 +43,41 @@ ApplicationWindow{
 
 //    SCRcamera {}
 
-
-    SCRhud {
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.verticalCenter: parent.verticalCenter
-        width: 500
-        height: 500
-
+    SCRBar {
+        id: rightBar
+        Component.onCompleted: {
+            log("LOG FOUND");
+        }
     }
-
-    SCRBar {}
 
 
     SCRNavigator {
-        width: parent.width * 0.65
-        height: parent.height * 0.65
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 100
-        anchors.left: parent.left
 
-        function toggle(){
-            var oldhdg = hdg
-            var auxhdg = (hdg + ((Math.random() - 0.5) * 10)) % 360
+        width: parent.width * 0.8
+        height: parent.height
+        anchors.horizontalCenter:  parent.horizontalCenter
+        anchors.verticalCenter: parent.verticalCenter
+//        anchors.rightMargin: 100
+//        anchors.left: parent.left
 
-            if (auxhdg < 0) auxhdg = auxhdg + 360
-            auxhdg = auxhdg.toFixed(0)
+//        function toggle(){
+//            var oldhdg = hdg
+//            var auxhdg = (hdg + ((Math.random() - 0.5) * 10)) % 360
 
-            changeHdg(auxhdg);
-        }
+//            if (auxhdg < 0) auxhdg = auxhdg + 360
+//            auxhdg = auxhdg.toFixed(0)
 
-        Timer {interval: 800; repeat: true; running: true; onTriggered: this.parent.toggle() }
+//            changeHdg(auxhdg);
+//        }
+
+//        Timer {interval: 800; repeat: true; running: true; onTriggered: this.parent.toggle() }
+    }
+
+    SCRLidarViewer{
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenter: parent.verticalCenter
+        width: parent.width * 0.8
+        height: parent.height
     }
 
 }
